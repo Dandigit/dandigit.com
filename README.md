@@ -1,2 +1,3 @@
-# dandigit.github.io
-The new home of Dandigit.com.
+# Dandigit.com
+I've finally found a new home for Dandigit.com - GitHub.
+Watch this page for changes and updates to the website.
