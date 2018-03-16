@@ -1,1 +1,37 @@
+.bccb {
+	padding: 4px;
+	border-radius: 3px;
+	border: 1px solid black;
+}
 
+.red {
+	background-color: red;
+}
+
+.orange {
+	background-color: orange;
+}
+
+.yellow {
+	background-color: yellow;
+}
+
+.limegreen {
+	background-color: limegreen;
+}
+
+.blue {
+	background-color: blue;
+}
+
+.purple {
+	background-color: purple;
+}
+
+.pink {
+	background-color: pink;
+}
+
+.white {
+	background-color: white;
+}

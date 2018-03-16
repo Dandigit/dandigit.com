@@ -4,7 +4,7 @@
 
 <head>
   <title>Dandigit</title>
-  <!-- Link to stylesheet here -->
+  <link type="text/css" rel="stylesheet" href="assets/css/main.css" />
 </head>
 
 <body>
@@ -28,48 +28,20 @@
   
   <!-- SNIPPET JAVASCRIPT -->
   <script>
-    function goRed() {
-			document.body.style.backgroundColor = "red";
-		}
-
-		function goOrange() {
-			document.body.style.backgroundColor = "orange";
-		}
-
-		function goYellow() {
-			document.body.style.backgroundColor = "yellow";
-		}
-
-		function goGreen() {
-			document.body.style.backgroundColor = "limegreen";
-		}
-
-		function goBlue() {
-			document.body.style.backgroundColor = "skyblue";
-		}
-
-		function goPurple() {
-			document.body.style.backgroundColor = "#d50eef";
-		}
-
-		function goPink() {
-			document.body.style.backgroundColor = "hotpink";
-		}
-
-		function goWhite() {
-			document.body.style.backgroundColor = "white";
+    function changeColour(colour) {
+			document.body.style.backgroundColor = colour;
 		}
   </script>
   
   <!-- SNIPPET HTML -->
   <p>
-    <button onclick="goRed()">red</button>
-    <button onclick="goOrange()">orange</button>
-    <button onclick="goYellow()">yellow</button>
-    <button onclick="goGreen()">green</button>
-    <button onclick="goBlue()">blue</button>
-    <button onclick="goPurple()">purple</button>
-    <button onclick="goPink()">pink</button>
-    <button onclick="goWhite()">defaults</button>
+    <button onclick="changeColour('red')" class="bccb red">red</button>
+    <button onclick="changeColour('orange')" class="bccb orange">orange</button>
+    <button onclick="changeColour('yellow')" class="bccb yellow">yellow</button>
+    <button onclick="changeColour('limegreen')" class="bccb limegreen">green</button>
+    <button onclick="changeColour('blue')" class="bccb blue">blue</button>
+    <button onclick="changeColour('purple')" class="bccb purple">purple</button>
+    <button onclick="changeColour('pink')" class="bccb pink">pink</button>
+    <button onclick="changeColour('white')" class="bccb white">defaults</button>
   </p>
     
