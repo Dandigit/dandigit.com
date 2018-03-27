@@ -17,6 +17,26 @@ body {
 	border: 3px solid black;
 }
 
+.navigation a:link {
+	text-decoration: none;
+	color: black;
+}
+
+.navigation a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+.navigation a:hover {
+	text-decoration: underline;
+	color: black;
+}
+
+.navigation a:active {
+	text-decoration: underline;
+	text-transform: bold;
+}
+
 .bccb {
 	padding: 4px;
 	border-radius: 3px;
