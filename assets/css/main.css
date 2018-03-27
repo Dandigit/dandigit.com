@@ -34,7 +34,8 @@ body {
 
 .navigation a:active {
 	text-decoration: underline;
-	text-transform: bold;
+	color: black;
+	font-weight: bold;
 }
 
 .bccb {
