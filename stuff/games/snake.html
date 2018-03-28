@@ -182,13 +182,12 @@ function setFood() {
  */
 function main() {
 	// create and initiate the canvas element
-	// canvas = document.crateElement("canvas");
-	canvas = document.getElementById("game");
+	canvas = document.crateElement("canvas");
 	canvas.width = COLS*20;
 	canvas.height = ROWS*20;
 	ctx = canvas.getContext("2d");
 	// add the canvas element to the body of the document
-	// document.body.appendChild(canvas);
+	document.body.appendChild(canvas);
 	// sets an base font for bigger score display
 	ctx.font = "12px Helvetica";
 	frames = 0;
