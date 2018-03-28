@@ -1,4 +1,5 @@
 <!-- Before you go and copy all of this code, keep in mind that it's illegal and I'll send my team of 1000 lawyers to your house to preosecute you. -->
+<!-- Code based on work by Max Wihlborg -->
 <!DOCTYPE html>
 
 <html lang="en">
@@ -181,7 +182,7 @@ function setFood() {
  */
 function main() {
 	// create and initiate the canvas element
-	canvas = document.createElement("canvas");
+	canvas = document.getElementById("game");
 	canvas.width = COLS*20;
 	canvas.height = ROWS*20;
 	ctx = canvas.getContext("2d");
@@ -321,7 +322,10 @@ function draw() {
 // start and run the game
 main();
 </script>
-<span>
-</span>
+
+<canvas id="game">
+
+</canvas>
+
 </body>
 </html>
