@@ -41,13 +41,14 @@
 
 <h2 style="text-align: center">Snake</h2>
 
+<span>
 <script>
 var
 /**
  * Constats
  */
-COLS = 17,
-ROWS = 17,
+COLS = 26,
+ROWS = 26,
 EMPTY = 0,
 SNAKE = 1,
 FRUIT = 2,
@@ -182,11 +183,11 @@ function setFood() {
 function main() {
 	// create and initiate the canvas element
 	canvas = document.createElement("canvas");
-	canvas.width = COLS*15;
-	canvas.height = ROWS*15;
+	canvas.width = COLS*20;
+	canvas.height = ROWS*20;
 	ctx = canvas.getContext("2d");
 	// add the canvas element to the body of the document
-	document.body.appendChild(canvas);
+	document.span.appendChild(canvas);
 	// sets an base font for bigger score display
 	ctx.font = "12px Helvetica";
 	frames = 0;
@@ -321,5 +322,6 @@ function draw() {
 // start and run the game
 main();
 </script>
+</span>
 </body>
 </html>
