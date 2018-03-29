@@ -1,12 +1,10 @@
-<!-- Before you go and copy all of this code, keep in mind that it's illegal and I'll send my team of 1000 lawyers to your house to preosecute you. -->
-<!-- Code based on work by Max Wihlborg -->
 <!DOCTYPE html>
 
 <html lang="en">
 
 <head>
-  <title>Dandigit - Snake</title>
   <meta charset="UTF-8">
+  <title>Dandigit - Snake</title>
   <link rel="icon" href="/favicon.ico" type="image/png">
   <link type="text/css" rel="stylesheet" href="/assets/css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
@@ -15,11 +13,6 @@
 		display: block;
 		position: absolute;
 		border: 1px solid #000;
-		margin: auto;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
 	}
 	</style>
 </head>
@@ -39,8 +32,6 @@
       </p>
     </nav>
   </div>
-
-<h2 style="text-align: center">Snake</h2>
 
 <script>
 var
@@ -182,7 +173,7 @@ function setFood() {
  */
 function main() {
 	// create and initiate the canvas element
-	canvas = document.crateElement("canvas");
+	canvas = document.createElement("canvas");
 	canvas.width = COLS*20;
 	canvas.height = ROWS*20;
 	ctx = canvas.getContext("2d");
