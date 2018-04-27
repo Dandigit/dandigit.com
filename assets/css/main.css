@@ -45,6 +45,10 @@ body {
 	font-weight: bold;
 }
 
+.content {
+	margin-left: 10px;
+}
+
 .bccb {
 	padding: 4px;
 	border-radius: 3px;
