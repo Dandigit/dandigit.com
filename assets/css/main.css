@@ -54,6 +54,9 @@ body {
 	border: 1px solid black;
 	padding: 5px;
 	padding-bottom: 5px;
+}
+
+.dlblock a {
 	text-decoration: none;
 }
 
