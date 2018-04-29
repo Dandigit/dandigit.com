@@ -49,10 +49,17 @@ body {
 	margin-left: 8px;
 }
 
+.dlblock {
+	display: inline;
+	border: 1px solid black;
+	padding-bottom: 3px;
+}
+
 .bccb {
 	padding: 4px;
 	border-radius: 3px;
 	border: 1px solid black;
+	font-family: 'Lato', sans-serif;
 }
 
 .red {
