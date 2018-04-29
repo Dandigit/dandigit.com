@@ -52,7 +52,7 @@ body {
 .dlblock {
 	display: inline-block;
 	border: 1px solid black;
-	padding-bottom: 3px;
+	padding: 5px;
 }
 
 .bccb {
