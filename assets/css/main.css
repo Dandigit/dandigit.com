@@ -8,6 +8,27 @@ body {
 	background-color: #FAFAFA;
 }
 
+table {
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+th, td {
+	padding: 15px;
+}
+
+th {
+	text-align: center;
+	font-weight: bold;
+}
+
+td {
+	text-align: right;
+}
+
 .header {
 	text-align: center;
 	border-top: 1px solid #FFB58C;
