@@ -81,6 +81,11 @@ td {
 	text-decoration: none;
 }
 
+.gblock {
+	display: inline-block;
+	padding-right: 20px;
+}
+
 .bccb {
 	padding: 4px;
 	border-radius: 3px;
