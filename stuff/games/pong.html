@@ -107,7 +107,7 @@
 			// calculate ideal position
 			var desty = ball.y - (this.height - ball.side)*0.5;
 			// ease the movement towards the ideal position
-			this.y += (desty - this.y) * 0.1;
+			this.y += (desty - this.y) * 0.09;
 			// keep the paddle inside of the canvas
 			this.y = Math.max(Math.min(this.y, HEIGHT - this.height), 0);
 		},
