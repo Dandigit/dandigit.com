@@ -71,7 +71,8 @@ canvas,	  /* HTMLCanvas */
 ctx,	  /* CanvasRenderingContext2d */
 keystate, /* Object, used for keyboard inputs */
 frames,   /* number, used for animation */
-score;	  /* number, keep track of the player score */
+score = 0;	  /* number, keep track of the player score */
+localStorage.high;
 /**
  * Grid datastructor, usefull in games where the game world is
  * confined in absolute sized chunks of data or information.
@@ -211,6 +212,7 @@ function main() {
  * Resets and inits game objects
  */
 function init() {
+	localStorage.high = score;
 	score = 0;
 	grid.init(EMPTY, COLS, ROWS);
 	var sp = {x:Math.floor(COLS/2), y:ROWS-1};
@@ -322,6 +324,7 @@ function draw() {
 	// message to the canvas
 	ctx.fillStyle = "#000";
 	ctx.fillText("SCORE: " + score, 10, canvas.height-10);
+	ctx.fillText("HIGH: " + localStorage.high, 10, canvas.height-20);
 }
 // start and run the game
 main();
