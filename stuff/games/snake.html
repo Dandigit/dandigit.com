@@ -212,7 +212,10 @@ function main() {
  * Resets and inits game objects
  */
 function init() {
-	localStorage.high = score;
+	if (score > localStorage.high)
+	{
+	    localStorage.high = score;
+	}
 	score = 0;
 	grid.init(EMPTY, COLS, ROWS);
 	var sp = {x:Math.floor(COLS/2), y:ROWS-1};
