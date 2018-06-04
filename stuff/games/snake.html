@@ -49,7 +49,7 @@
 <script>
 var
 /**
- * Constats
+ * Constants
  */
 COLS = 26,
 ROWS = 26,
@@ -73,6 +73,7 @@ keystate, /* Object, used for keyboard inputs */
 frames,   /* number, used for animation */
 score = 0;	  /* number, keep track of the player score */
 localStorage.high;
+typeof(localStorage.high)==='number';
 /**
  * Grid datastructor, usefull in games where the game world is
  * confined in absolute sized chunks of data or information.
