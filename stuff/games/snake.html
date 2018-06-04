@@ -73,7 +73,6 @@ keystate, /* Object, used for keyboard inputs */
 frames,   /* number, used for animation */
 score = 0;	  /* number, keep track of the player score */
 localStorage.high;
-typeof(localStorage.high)==='number';
 /**
  * Grid datastructor, usefull in games where the game world is
  * confined in absolute sized chunks of data or information.
@@ -187,7 +186,6 @@ function setFood() {
  * Starts the game
  */
 function main() {
-	if (localStorage.high <= 0) localStorage.high = 0;
 	// create and initiate the canvas element
 	canvas = document.createElement("canvas");
 	canvas.width = COLS*20;
@@ -214,6 +212,10 @@ function main() {
  * Resets and inits game objects
  */
 function init() {
+	if (localStorage.getItem("high") === null)
+	{
+		localStorage.high = 0;s
+	}
 	score = 0;
 	grid.init(EMPTY, COLS, ROWS);
 	var sp = {x:Math.floor(COLS/2), y:ROWS-1};
