@@ -186,6 +186,7 @@ function setFood() {
  * Starts the game
  */
 function main() {
+	if (localStorage.high <= 0) localStorage.high = 0;
 	// create and initiate the canvas element
 	canvas = document.createElement("canvas");
 	canvas.width = COLS*20;
