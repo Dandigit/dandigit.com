@@ -212,10 +212,6 @@ function main() {
  * Resets and inits game objects
  */
 function init() {
-	if (score >= localStorage.high)
-	{
-	    localStorage.high = score;
-	}
 	score = 0;
 	grid.init(EMPTY, COLS, ROWS);
 	var sp = {x:Math.floor(COLS/2), y:ROWS-1};
@@ -227,6 +223,10 @@ function init() {
  * The game loop function, used for game updates and rendering
  */
 function loop() {
+	if (score >= localStorage.high)
+	{
+	    localStorage.high = score;
+	}
 	update();
 	draw();
 	// When ready to redraw the canvas call the loop function
