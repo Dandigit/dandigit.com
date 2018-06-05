@@ -71,8 +71,8 @@ canvas,	  /* HTMLCanvas */
 ctx,	  /* CanvasRenderingContext2d */
 keystate, /* Object, used for keyboard inputs */
 frames,   /* number, used for animation */
-score = 0;	  /* number, keep track of the player score */
-localStorage.high;
+score = 0,	  /* number, keep track of the player score */
+highscore = localStorage.getItem("highscore");
 /**
  * Grid datastructor, usefull in games where the game world is
  * confined in absolute sized chunks of data or information.
@@ -212,10 +212,6 @@ function main() {
  * Resets and inits game objects
  */
 function init() {
-	if (localStorage.getItem("high") === null)
-	{
-		localStorage.high = 0;s
-	}
 	score = 0;
 	grid.init(EMPTY, COLS, ROWS);
 	var sp = {x:Math.floor(COLS/2), y:ROWS-1};
@@ -227,9 +223,12 @@ function init() {
  * The game loop function, used for game updates and rendering
  */
 function loop() {
-	if (score >= localStorage.high)
+	if (highscore !== null)
 	{
-	    localStorage.high = score;
+		if (score > highscore)
+		{
+			localStorage.setItem("highscore", score);
+		} 
 	}
 	update();
 	draw();
@@ -331,7 +330,7 @@ function draw() {
 	// message to the canvas
 	ctx.fillStyle = "#000";
 	ctx.fillText("SCORE: " + score, 10, canvas.height-25);
-	ctx.fillText("HIGH: " + localStorage.high, 10, canvas.height-10);
+	ctx.fillText("HIGH: " + highscore, 10, canvas.height-10);
 }
 // start and run the game
 main();
