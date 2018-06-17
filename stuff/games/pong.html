@@ -54,6 +54,7 @@
 	 */
 	WIDTH  = 700,
 	HEIGHT = 500,
+	DIFFICULTY = 0.5,
 	pi = Math.PI,
 	UpArrow   = 38,
 	DownArrow = 40,
@@ -110,7 +111,7 @@
 			// calculate ideal position
 			var desty = ball.y - (this.height - ball.side)*0.5;
 			// ease the movement towards the ideal position
-			this.y += (desty - this.y) * 0.5;
+			this.y += (desty - this.y) * DIFFICULTY;
 			// keep the paddle inside of the canvas
 			this.y = Math.max(Math.min(this.y, HEIGHT - this.height), 0);
 		},
