@@ -60,12 +60,8 @@ a {
 	text-decoration: none;
 }
 
-.navbar li a:hover {
+.navbar :not(.active) li a:hover {
 	background-color: #111111;
-}
-
-.active li a:hover {
-	background-color: #dba076;
 }
 
 .navbar li p {
