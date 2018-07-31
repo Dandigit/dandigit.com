@@ -83,6 +83,13 @@ a {
 	background-color: #FFBB88;
 }
 
+.github-icon a {
+	padding: 0px 0px;
+	margin: 0px 0px;
+	width: auto;
+	height: 1.27em;
+}
+
 .content {
 	margin-left: 8px;
 }
