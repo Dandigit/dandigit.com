@@ -64,12 +64,15 @@ a {
 	background-color: #111111;
 }
 
+.navbar .active li a:hover {
+	background-color: #dba076;
+}
+
 .navbar li p {
 	display: block;
 	color: white;
 	text-align: center;
-	margin-left: 8px;
-	padding: 0px 8px 0px 0.5px;
+	padding: 0px 16px 0px 16px;
 }
 
 .navbar a {
