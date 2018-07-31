@@ -77,7 +77,7 @@ a {
 	padding: 8px;
 }
 
-.navbar a:active {
+.navbar .active {
 	background-color: #FFBB88;
 }
 
