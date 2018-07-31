@@ -60,11 +60,11 @@ a {
 	text-decoration: none;
 }
 
-.navbar .inactive li a:hover {
+.navbar li a:hover {
 	background-color: #111111;
 }
 
-.navbar .active li a:hover {
+.navbar #active li a:hover {
 	background-color: #FFBB88;
 }
 
@@ -80,7 +80,7 @@ a {
 	padding: 8px;
 }
 
-.navbar .active {
+.navbar #active {
 	background-color: #FFBB88;
 }
 
