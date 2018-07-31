@@ -40,6 +40,22 @@ a {
 	background-color: #FFBB88;
 }
 
+.navbar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: #dddddd
+}
+
+.navbar li {
+	float: left;
+}
+
+.navbar a {
+	display: block;
+	padding: 8px;
+}
+
 .navigation {
 	display: inline-block;
 	margin-bottom: 10px;
