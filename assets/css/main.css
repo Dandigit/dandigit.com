@@ -60,6 +60,13 @@ a {
 	text-decoration: none;
 }
 
+.navbar li p {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+}
+
 .navbar a {
 	display: block;
 	padding: 8px;
