@@ -33,13 +33,6 @@ a {
 	display: inline-block;
 }
 
-.header {
-	text-align: center;
-	border-top: 1px solid #FFBB88;
-	border-bottom: 1px solid black;
-	background-color: #FFBB88;
-}
-
 .navbar ul {
 	list-style-type: none;
 	margin: 0;
@@ -82,36 +75,6 @@ a {
 
 .navbar .active {
 	background-color: #FFBB88;
-}
-
-.navigation {
-	display: inline-block;
-	margin-bottom: 10px;
-	padding: 5px 25px;
-	background-color: white;
-	border-radius: 5px;
-	border: 3px solid black;
-}
-
-.navigation a:link {
-	text-decoration: none;
-	color: black;
-}
-
-.navigation a:visited {
-	text-decoration: none;
-	color: black;
-}
-
-.navigation a:hover {
-	text-decoration: underline;
-	color: black;
-}
-
-.navigation a:active {
-	text-decoration: underline;
-	color: black;
-	font-weight: bold;
 }
 
 .content {
