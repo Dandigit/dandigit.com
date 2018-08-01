@@ -33,6 +33,10 @@ a {
 	display: inline-block;
 }
 
+.game-title {
+	text-align: center;
+}
+
 .navbar ul {
 	list-style-type: none;
 	margin: 0;
