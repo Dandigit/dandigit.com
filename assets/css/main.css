@@ -103,9 +103,23 @@ a {
 	margin-left: 8px;
 }
 
-.doggo-example {
+.doggo-code code {
 	text-align: right;
 	position: absolute;
+	color: white;
+}
+
+.doggo-code {
+	float: right;
+	border-radius: 8px;
+	border: 3px solid white;
+
+	background: #42f474;
+	background: #ffff00; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ffff00 0%, #00ff66 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #ffff00 0%,#00ff66 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #ffff00 0%,#00ff66 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff00', endColorstr='#00ff66',GradientType=0 ); /* IE6-9 */
 }
 
 .dlblock {
