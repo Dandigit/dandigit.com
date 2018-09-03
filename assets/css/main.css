@@ -37,17 +37,6 @@ a {
 	text-align: center;
 }
 
-.navbar-container {
-	background-color: #333333;
-	margin: 0;
-	padding: 0;
-}
-
-.navbar {
-	margin-left: 20%;
-	margin-right: 20%;
-}
-
 .navbar ul {
 	list-style-type: none;
 	margin: 0;
@@ -103,6 +92,11 @@ a {
 	margin: 0px 0px;
 	width: auto;
 	height: 1.27em;
+}
+
+.hero {
+	background-color: #dddddd;
+	text-align: center;
 }
 
 .content {
