@@ -103,6 +103,11 @@ a {
 	margin-left: 8px;
 }
 
+.doggo-example {
+	text-align: right;
+	position: absolute;
+}
+
 .dlblock {
 	display: inline-block;
 	border: 1px solid black;
