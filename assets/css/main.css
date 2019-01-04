@@ -114,8 +114,8 @@ a {
 	border-bottom: 1px solid #ddd;
 }
 
-.post-list-entry td {
-	width: 50px;
+.post-list-entry strong {
+	padding-right: 4em ;
 }
 
 .post-list-entry:nth-child(even) {
