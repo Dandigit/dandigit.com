@@ -108,6 +108,10 @@ a {
 	font-size: 1.25em;
 }
 
+th, td, table {
+
+}
+
 .post-list-entry:nth-child(even) {
 	background-color: #f2f2f2;
 }
