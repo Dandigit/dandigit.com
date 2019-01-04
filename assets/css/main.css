@@ -110,8 +110,12 @@ a {
 
 .post-list-entry th, td {
 	text-align: left;
-	padding: 15px;
+	padding: 5px;
 	border-bottom: 1px solid #ddd;
+}
+
+.post-list-entry td {
+	width: 50px;
 }
 
 .post-list-entry:nth-child(even) {
