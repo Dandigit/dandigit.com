@@ -108,8 +108,8 @@ a {
 	font-size: 1.25em;
 }
 
-th, td, table {
-
+th, td {
+	border-bottom: 1px solid #ddd;
 }
 
 .post-list-entry:nth-child(even) {
