@@ -108,7 +108,9 @@ a {
 	font-size: 1.25em;
 }
 
-th, td {
+.post-list-entry th, td {
+	text-align: left;
+	padding: 15px;
 	border-bottom: 1px solid #ddd;
 }
 
