@@ -108,8 +108,8 @@ a {
 	font-size: 1.25em;
 }
 
-.post-list-entry {
-	
+.post-list-entry:nth-child(even) {
+	background-color: #f2f2f2;
 }
 
 .doggo-code code {
