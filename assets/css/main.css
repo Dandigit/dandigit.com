@@ -8,7 +8,7 @@ body {
 	background-color: #FAFAFA;
 }
 
-table {
+/*table {
 	border-collapse: collapse;
 }
 
@@ -27,7 +27,7 @@ th {
 
 td {
 	text-align: right;
-}
+}*/
 
 a {
 	display: inline-block;
