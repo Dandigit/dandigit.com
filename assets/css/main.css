@@ -1,198 +1,27 @@
-html, body {
-	margin: 0;
-	padding: 0;
+@media (max-width: 576px) {
+  .d-post-info {
+    text-align: left;
+  }
+
+  .d-post-info-seperator {
+    visibility: visible;
+  }
 }
 
-body {
-	font-family: 'Lato', sans-serif;
-	background-color: #FAFAFA;
+@media (min-width: 576px) {
+  .d-post-info {
+    text-align: right;
+  }
+
+  .d-post-info-seperator {
+    visibility: hidden;
+  }
 }
 
-/*table {
-	border-collapse: collapse;
+.d-post-list-entry {
+  text-align: center;
 }
 
-table, th, td {
-	border: 1px solid black;
-}
-
-th, td {
-	padding: 15px;
-}
-
-th {
-	text-align: center;
-	font-weight: bold;
-}
-
-td {
-	text-align: right;
-}*/
-
-a {
-	display: inline-block;
-}
-
-.game-title {
-	text-align: center;
-}
-
-.navbar ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #333333;
-}
-
-.navbar li {
-	float: left;
-}
-
-.navbar li a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 16px 16px;
-	text-decoration: none;
-}
-
-.navbar li a:hover {
-	background-color: #111111;
-}
-
-.navbar .active a:hover {
-	background-color: #FFBB88;
-}
-
-.navbar li img {
-	height: 100%;
-	width: 100%;
-	object-fit: contain;
-}
-
-.navbar li p {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 0px 16px 0px 16px;
-}
-
-.navbar a {
-	display: block;
-	padding: 8px;
-}
-
-.navbar .active {
-	background-color: #FFBB88;
-}
-
-.github-icon a {
-	padding: 0px 0px;
-	margin: 0px 0px;
-	width: auto;
-	height: 1.27em;
-}
-
-.hero {
-	background-color: #efefef;
-	text-align: center;
-}
-
-.content {
-	margin-left: 12px;
-	margin-right: 12px;
-}
-
-.post p {
-	font-size: 1.25em;
-}
-
-.post-list-entry th, td {
-	text-align: left;
-	padding: 5px;
-	border-bottom: 1px solid #ddd;
-}
-
-.post-list-entry strong {
-	padding-right: 4em ;
-}
-
-.post-list-entry:nth-child(even) {
-	background-color: #f2f2f2;
-}
-
-.doggo-code code {
-	text-align: right;
-	position: absolute;
-	color: white;
-}
-
-.doggo-code {
-	float: right;
-	border-radius: 8px;
-	border: 3px solid white;
-
-	background: #42f474;
-	background: #ffff00; /* Old browsers */
-	background: -moz-linear-gradient(top,  #ffff00 0%, #00ff66 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  #ffff00 0%,#00ff66 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  #ffff00 0%,#00ff66 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff00', endColorstr='#00ff66',GradientType=0 ); /* IE6-9 */
-}
-
-.dlblock {
-	display: inline-block;
-	border: 1px solid black;
-	padding: 5px;
-	padding-bottom: 5px;
-}
-
-.dlblock a {
-	text-decoration: none;
-	color: black;
-}
-
-.gblock {
-	display: inline-block;
-	padding-right: 40px;
-}
-
-.bccb {
-	padding: 4px;
-	border-radius: 3px;
-	border: 1px solid black;
-	font-family: 'Lato', sans-serif;
-}
-
-.red {
-	background-color: red;
-}
-
-.orange {
-	background-color: orange;
-}
-
-.yellow {
-	background-color: yellow;
-}
-
-.limegreen {
-	background-color: limegreen;
-}
-
-.blue {
-	background-color: blue;
-}
-
-.purple {
-	background-color: purple;
-}
-
-.pink {
-	background-color: pink;
-}
-
-.white {
-	background-color: white;
+.d-post-title {
+  text-decoration: none;
 }

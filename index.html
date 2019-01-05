@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-  <title>Dandigit</title>
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-  <link rel="icon" href="/favicon.ico" type="image/png">
-  <link type="text/css" rel="stylesheet" href="/assets/css/main.css" />
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <!-- Dandigit CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116596508-2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -21,33 +23,65 @@
 </head>
 
 <body>
-  <div class="navbar">
-    <ul>
-      <li><p>Dandigit</p></li>
-      <li class="github-icon"><a href="https://github.com/Dandigit"><img src="/assets/img/github/GitHub-Mark-Light-32px.png"></a></li>
-      <li class="active"><a href="/index.html">Home</a></li>    
-      <li><a href="/posts/index.html">Posts</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Dandigit <img src="/assets/img/dandigit-icon-300px.png" width="30" height="30"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/index.html">Home<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/posts/index.html">Posts</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Dandigit"><img src="/assets/img/github-icon-64px.png" width="22" height="22"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <img src="/assets/img/dandigit-icon-300px.png" width="150" height="150">
+        </div>
+        <div class="col-md-9">
+          <h1 class="display-4">Hello!</h1>
+          <p class="lead">I'm Dan, and this is my website. Just images and text that are mine. Have a read - I'll still be here when you get back.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-
-  <div class="hero">
-    <img src="/assets/img/coffeecup.gif" width="200" height="200" />
-    <h2>Hello!</h2>
-    <p>I'm Dan, and this is my website. Just images and text that are mine. Take a look - I'll still be here when you get back.</p>
-    <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 d-post-info">
+        <h2 class="d-post-title" href="/posts/welcome.html">Welcome!</h2>
+        <h6 class="text-muted">4/1/19</h6>
+        <hr class="d-post-info-seperator">
+      </div>
+      <div class="col-sm-8">
+        <p>
+        Hi, I'm Dan.
+        This is my blog. If you're at all interested in programming, you'll probably find it interesting.
+        If not, here's a cute little chicken to cheer you up: 🐔.
+        </p>
+      </div>
+    </div>
   </div>
-  
-  <div class="content">
-    <div class="post" id="welcome">
-      <h3>Welcome!</h3>
-      <h5>4/1/19</h5>
 
-      <p>
-      Hi, I'm Dan.<br>
-      This is my blog. If you're at all interested in programming, you'll probably find it interesting.<br>
-      If not, here's a cute little chicken to cheer you up: 🐔.
-      </p>
-    </div>    
-  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
+
+</html>
