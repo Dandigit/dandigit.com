@@ -23,5 +23,5 @@
 }
 
 .d-post-title {
-  text-decoration: none;
+  text-decoration: none !important;
 }
