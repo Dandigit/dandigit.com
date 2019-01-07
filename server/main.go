@@ -32,9 +32,6 @@ func main() {
 	http.HandleFunc("/posts/all", handlePostList)
 	http.HandleFunc("/posts/", handlePost)
 	http.HandleFunc("/", handleHomepage)
-
-	go func() {
-		log.Fatal(http.ListenAndServe(":80", nil))
-	}()
-	log.Fatal(http.ListenAndServe(":443", nil))
+	
+	log.Fatal(http.ListenAndServeTLS(":443", "", "", nil))
 }
