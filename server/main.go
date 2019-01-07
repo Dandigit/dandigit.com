@@ -33,5 +33,5 @@ func main() {
 	http.HandleFunc("/posts/", handlePost)
 	http.HandleFunc("/", handleHomepage)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":80", nil))
 }
