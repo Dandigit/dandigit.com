@@ -1,0 +1,212 @@
+Bigboy: Writing a Gameboy Emulator
+26/7/20
+
+<p>
+<strong>!! &lt;disclaimer&gt; I have no idea what I'm talking about. &lt;/disclaimer&gt; !!</strong>
+
+<h3>Big Idea<h3>
+
+I've always been fascinated by emulators. There's a certain aura of mystique that surrounds them to this day - perhaps it is their sheer scale, or their complexity.Perhaps, I, mere commoner, simply just do not posess enough of a galaxy brain to understand their infinite intricacies.
+
+Perhaps it is none of these things. Perhaps an emulator is just another piece of software. Sure, it'd a step up from baby's first sorting algorithm, and sure, it'd be a step down from a serverless-blockchain-asynchronous-visualiser-contract-kubernetes-system, but perhaps, you're a lot closer than you think to your own emulator (bragging rights included, batteries not required).
+
+In truth, yes and no. Writing an emulator was easy because all of the hard work had already been done for me! With older systems like the Gameboy, Gameboy Advance, NES, SNES, Genesis, extensive documentation exists, written by very smart hacker people who look at things under microscopes. Furthermore, for all of these systems, well-documented open source emulators already exist, and are an excellent reference for budding emulation enthusiasts.
+
+Don't believe me?
+
+<h3>Big Project</h3>
+
+I've been working on my own Gameboy emulator, Bigboy, on and off for about a semester now. It can play Tetris and Pokemon quite well, although it is by no means fully featured - there's still no support for audio, some graphical glitches, and several games are unplayable; hopefully I can fix this in the near future. I am by no means a programming god - in fact I am far from it - but even I could get the basics down. I feel that nothing, past, present or future, will ever beat the satisfaction of getting Tetris to work by my own accord.
+
+You know what this means, right? If I can do it, you can do it!
+
+"But where do I start?" you ask. Good question!
+
+<h3>Big Book</h3>
+
+Don't make the same mistake I did! I started off by doing a bit of preliminary research about the Gameboy's internals, and I came across an article somewhere telling me that it had a CPU similar to the Zilog Z80. Key word: similar. Not same.
+
+Naive me thought, "Well, isn't this a good place to start! I'll go and find the Z80 manual and go from there!". To some extent I was right, but my approach ended up causing more problems than it solved later on down the track, as you'll soon see. I did manage to obtain a copy of the manual, all 332 pages of it, but I cannot stress to you enough: this was the wrong approach.
+
+As it turns out, the Gameboy's real hardware differs quite significantly from that of a stock Z80, in some clear, major ways, and in other annoyingly minor ways. So here's how I suggest you start:
+<ul>
+<li>The CPU is the right place to start - just don't go diving off into the shark-infested Z80 manual.</li>
+<li>Instead, take a look at Ryan Levik's <a href="https://blog.ryanlevick.com/DMG-01/public/book/">fantastic introductory guide</a>. Note that it is currently incomplete - don't read past the CPU chapter or you'll just confuse yourself.</li>
+<li>While you're at it, grab a copy of Marc Rawer's excellent <a href="http://marc.rawer.de/Gameboy/Docs/GBCPUman.pdf">Gameboy CPU Manual</a>. It's the right reference for those specifics that the guide doesn't really cover.</li>
+<li>Check out <a href="https://bgb.bircd.org/pandocs.htm">the Pandocs</a> and the <a href="https://gbdev.gg8.se/wiki/articles/Main_Page">GBDev Wiki</a>! These are both great resources not only for the CPU, but for everything else too once you're ready. The Pandocs in particular were very helpful for getting graphics working.</li>
+<li>Take a look at the <a href="https://github.com/Dandigit/bigboy">Bigboy source code</a>! It's not as well-documented as it could possibly be, but I did deliberately sacrifice some performance for code simplicity. In <a href="https://github.com/Dandigit/bigboy/blob/master/include/bigboy/CPU/OpCode.h">OpCode.h</a> and <a href="https://github.com/Dandigit/bigboy/blob/master/include/bigboy/CPU/PrefixOpCode.h">PrefixOpCode.h</a> I've described each instruction in a bit of detail. You can see what their implementations look like in <a href="https://github.com/Dandigit/bigboy/blob/master/lib/CPU/CPU.cpp">CPU.cpp</a>.</li>
+</ul>
+
+<h3>Big Numbers</h3>
+
+Let's talk about CPU registers. The Gameboy's CPU has seven 8-bit registers, very creatively named B, C, D, E, H, L, and A. You can also access two of these registers at a time as one 16-bit register through the three register pairs: BC, DE and HL. Additionaly, there's the 16-bit stack pointer (called SP), and the 16-bit program counter (called PC).
+
+I had several different approaches to this initially. For whatever reason, in the pursuit of cleanliness or good practice or some other divine unattainable purity, at one point I had three seperate classes for the registers that overloaded `operator=` and all that funky jazz. As much as I hoped this strategy would reduce code complexity, all it ended up doing was take up more time than it was worth. Down the line, it caused some problems that eventually led me to scrap it and use the 'hacky solution' instead.
+
+```
+struct Registers {
+    // General purpose
+    uint8_t c = 0;
+    uint8_t b = 0;
+
+    uint8_t e = 0;
+    uint8_t d = 0;
+
+    uint8_t l = 0;
+    uint8_t h = 0;
+
+    // Accumulator and flags
+    uint8_t f = 0;
+    uint8_t a = 0;
+}
+```
+
+Notice the order that they are defined in. Because C++ guarantees that struct fields will be laid out in memory sequentially as they are in code, I can do this to access two 8-bit registers as one 16-bit register:
+
+<pre>
+uint16_t& Registers::BC() {
+    return *static_cast&lt;uint16_t*&gt;(static_cast&lt;void*&gt;(&c));
+}
+</pre>
+
+Pretty nifty, huh? Note that this solution is tied to the fact that x86 is little-endian - if you wanted to port to a big endian architecture, you'd need to define a preprocessor flag that switches the orders around. `C; B` would become `B; C`, and so on.
+
+<h3>Big Bugs</h3>
+
+Implementing the CPU was not without pain. Initially I was too stubborn to implement any debugging functionality into Bigboy, in part due to laziness, and in part due to egotistical mania.
+
+When I got to the point where I had implemented enough instructions to start trying to run game ROMs, I very quickly ran into unexplainable oddities within my supposedly flawless program logic. So, I caved and wrote a very basic debugger, which I really should have done from the get-go a month earlier.
+
+When I say very basic, I mean very basic. In 'debugging mode', every time the CPU goes to execute an instruction, it gathers up the current values of each register and each flag, and dumps them in a text file. That looks something like:
+
+<pre>
+std::string CPU::disassembleCurrent() {
+    auto current = static_cast&lt;OpCode&gt;(m_mmu.readByte(m_pc));
+    std::stringstream s;
+
+    s << "-- DISASSEMBLY\n";
+    s << "-- clock = " << m_clock << '\n';
+    s << "-- " //<< opCodeToString(current)
+            << '(' << (int)current << ") "
+            << '[' << (int)(m_mmu.readByte(m_pc + 1)) << "] "
+            << '[' << (int)(m_mmu.readByte(m_pc + 2)) << "]\n";
+    s << "-- b = " << (int) m_registers.b <<
+            ", c = " << (int) m_registers.c <<
+            ", bc = " << m_registers.BC() << '\n';
+    
+    ...
+
+    s << "-- a = " << (int) m_registers.a <<
+            ", f = " << (int) m_registers.f <<
+            ", af = " << m_registers.AF() << '\n';
+    s << "-- pc = " << m_pc << ", sp = " << m_registers.sp << '\n';
+    s << "-- zero = " << getZeroFlag() <<
+            ", subtract = " << getSubtractFlag() <<
+            ", halfCarry = " << getHalfCarryFlag() <<
+            ", carry = " << getCarryFlag() << '\n';
+    
+    ...
+
+            ", tima = " << (int)(m_mmu.readByte(0xFF05)) <<
+            ", tma = " << (int)(m_mmu.readByte(0xFF06)) << '\n';
+
+    return s.str();
+}
+</pre>
+
+I grabbed myself a copy of an objectively superior Gameboy emulator and modified it to output a text file with the exact same format that I was dumping in mine. Then, when I ran into issues, I'd run both emulators with the debugger enabled. Afterwards, I'd look for the first difference between the two text files, in order to see exactly where the problem lay:
+
+```
+cmp bigboy-dump.txt actually-good-emulator-dump.txt
+```
+
+Whilst this strategy was heniously slow and limited, I was surprised by how many bugs it let me weed out - with only this I managed to get games working. If, like me, you can't be bothered to write a proper debugger, I wholly endorse this terrible solution.
+
+<h3>Big Graphics</h3>
+
+A little embarrased by how unnecessarily long the CPU took me, I started writing the GPU component with a strong resolve to get it done and get it right. I found that I was initially a bit out-of-depth when reading about all of these mysterious terms like tileset, tilemap, v-blank, but again, I was saved by the fact that someone else had already done the hard work for me.
+
+My saving grace was Imran Nazar's terriffic <a href="http://imrannazar.com/GameBoy-Emulation-in-JavaScript:-GPU-Timings">GPU emulation write-up</a>, which finally enlightened me as to how everything fit together. After reading it, I found the <a href="https://bgb.bircd.org/pandocs.htm#videodisplay">Pandocs graphics section</a> much more legible.  Both of these resources were immensely helpful in giving me an understanding of how it is that the Gameboy's graphics are rendered, and if you get to this point, they are both an essential read.
+
+Essentially, the Gameboy's graphics are rendered in three distinct layers: the background, the sprites, and the window. When the CPU finishes executing an instruction, it sends the GPU a message telling it how long it took to do so. In Bigboy, that looks like this:
+
+<pre>
+// This method gets called every time we want to execute one instruction
+void CPU::update() {
+    const uint8_t cycles = executeNextInstruction();
+
+    // Disassembly, timing, etc...
+
+    const GPU::Request gpuRequest = m_gpu.update(cycles);
+    
+    // Handle interrupts...
+}
+</pre>
+
+When the GPU recieves this message, it adds the amount of time the instruction took to its 'mode clock'. Essentially, this clock counts the amount of cycles since the GPU last switched 'modes'. "What's a mode?" I hear you ask. Essentially, it's a representation of the work that the display would actually be doing in a real Gameboy. There's four distinct modes, each taking a different number of cycles to complete:
+
+<pre>
+enum class GPUMode {
+    HORIZONTAL_BLANK = 0, // 204 cycles  (H-Blank)
+    VERTICAL_BLANK = 1,   // 4560 cycles (V-Blank)
+    SCANLINE_OAM = 2,     // 80 cycles   (Searching OAM-RAM)
+    SCANLINE_VRAM = 3     // 172 cycles  (Transferring Data to LCD Driver)
+};
+</pre>
+
+Every time the GPU is updated by the CPU, it checks if the current mode has been completed. If so, it switches to the next mode. It continues to do this in a cycle for as long as the game is open.
+
+<pre>
+// This has been simplified for brevity - it is incomplete!
+GPU::Request GPU::update(uint8_t cycles) {
+    m_clock += cycles;
+
+    switch (getMode()) {
+        case GPUMode::HORIZONTAL_BLANK:
+            if (m_clock >= 204) {
+                m_clock -= 204;
+                ++m_currentY;
+
+                if (m_currentY == 144) {
+                    switchMode(GPUMode::VERTICAL_BLANK);
+                } else {
+                    switchMode(GPUMode::SCANLINE_OAM);
+                }
+            }
+            break;
+        case GPUMode::VERTICAL_BLANK:
+            if (m_clock >= 456) {
+                m_clock -= 456;
+                ++m_currentY;
+
+                if (m_currentY == 154) {
+                    m_currentY = 0;
+                    requestStat = switchMode(GPUMode::SCANLINE_OAM);
+                }
+            }
+            break;
+        case GPUMode::SCANLINE_OAM:
+            if (m_clock >= 80) {
+                m_clock -= 80;
+                requestStat = switchMode(GPUMode::SCANLINE_VRAM);
+            }
+            break;
+        case GPUMode::SCANLINE_VRAM:
+            if (m_clock >= 172) {
+                m_clock -= 172;
+                renderScanline();
+                requestStat = switchMode(GPUMode::HORIZONTAL_BLANK);
+            }
+            break;
+    }
+}
+</pre>
+
+Notice that for the majority of clock cycles, the GPU isn't actually doing anything! It is only when we reach the SCANLINE_VRAM mode that the GPU actually renders a scanline (one horizontal line of pixels). Thankfully, we can afford to do this, because even the most vegetative of computers are orders of magnitude faster than the OG Gameboy. This, I would describe to be the essence of my (nascent) approach to emulation: do the logical thing rather than the fast or accurate thing.
+
+<h3>Big Conclusion</h3>
+
+If there is one thing that I've learned from this project, it's to take big bites. Sometimes, biting off more that you can chew can be an incredibly valuable experience. No matter how far you get in implementing your emulator, I can guarantee that you will come out of the experience a better programmer, as I (like to think) I have.
+
+Big thanks to everyone whose contributions to the Gameboy knowledge sphere helped me to get Bigboy working. Especially to all of the authors of the references I've cited, as well as those who've written open source Gameboy emulators before me, particularly: <a href="https://github.com/jgilchrist/gbemu">jgilchrist/gbemu</a>, <a href="https://github.com/Dooskington/GameLad">Dooskington/GameLad</a>, and <a href="https://bgb.bircd.org/">bgb</a>.
+</p>
