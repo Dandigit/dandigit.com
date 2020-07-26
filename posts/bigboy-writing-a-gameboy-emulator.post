@@ -6,7 +6,7 @@ Bigboy: Writing a Gameboy Emulator
 
 <h3>Big Idea</h3>
 
-I've always been fascinated by emulators. There's a certain aura of mystique that surrounds them to this day - perhaps it is their sheer scale, or their complexity.Perhaps, I, mere commoner, simply just do not posess enough of a galaxy brain to understand their infinite intricacies.
+I've always been fascinated by emulators. There's a certain aura of mystique that surrounds them to this day - perhaps it is their sheer scale, or their complexity. Perhaps, I, mere commoner, simply just do not posess enough of a galaxy brain to understand their infinite intricacies.
 <br><br>
 Perhaps it is none of these things. Perhaps an emulator is just another piece of software. Sure, it'd a step up from baby's first sorting algorithm, and sure, it'd be a step down from a serverless-blockchain-asynchronous-visualiser-contract-kubernetes-system, but perhaps, you're a lot closer than you think to your own emulator (bragging rights included, batteries not required).
 <br><br>
@@ -16,7 +16,7 @@ Don't believe me?
 <br><br>
 <h3>Big Project</h3>
 
-I've been working on my own Gameboy emulator, Bigboy, on and off for about a semester now. It can play Tetris and Pokemon quite well, although it is by no means fully featured - there's still no support for audio, some graphical glitches, and several games are unplayable; hopefully I can fix this in the near future. I am by no means a programming god - in fact I am far from it - but even I could get the basics down. I feel that nothing, past, present or future, will ever beat the satisfaction of getting Tetris to work by my own accord.
+I've been working on my own Gameboy emulator, <a href="https://github.com/Dandigit/bigboy">Bigboy</a>, on and off for about a semester now. It can play Tetris and Pokemon quite well, although it is by no means fully featured - there's still no support for audio, some graphical glitches, and several games are unplayable; hopefully I can fix this in the near future. I am by no means a programming god - in fact I am far from it - but even I could get the basics down. I feel that nothing, past, present or future, will ever beat the satisfaction of getting Tetris to work by my own accord.
 <br><br>
 You know what this means, right? If I can do it, you can do it!
 <br><br>
